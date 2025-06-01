@@ -20,10 +20,10 @@ exports.register = async (req, res) => {
             birth_date
         });
 
-        return res.status(201).json({ message: 'User registered successfully', user_id: user.user_id });
+        return res.status(201).json({ message: 'Регистрация прошла успешно', user_id: user.user_id });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Registration failed' });
+        return res.status(500).json({ error: 'Ошибка регистрации' });
     }
 };
 
@@ -36,10 +36,10 @@ exports.login = async (req, res) => {
             attributes: ['user_id', 'username', 'email', 'password_hash']
         });
 
-        if (!user) return res.status(404).json({ error: 'User not found' });
+        if (!user) return res.status(404).json({ error: 'Пользователь не найден' });
 
         const isValid = await bcrypt.compare(password, user.password_hash);
-        if (!isValid) return res.status(401).json({ error: 'Invalid password' });
+        if (!isValid) return res.status(401).json({ error: 'Ошибка пароля' });
 
         const token = jwt.sign(
             { id: user.user_id, email: user.email },
@@ -48,17 +48,17 @@ exports.login = async (req, res) => {
         );
 
         return res.status(200).json({
-            message: 'Login successful',
+            message: 'Успешный вход',
             token,
             user: {
-                id: user.user_id,
+                user_id: user.user_id,
                 username: user.username,
                 email: user.email
             }
         });
     } catch (error) {
         console.error('Login error:', error);
-        return res.status(500).json({ error: 'Login failed' });
+        return res.status(500).json({ error: 'Ошибка входа' });
     }
 };
 

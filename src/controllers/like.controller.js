@@ -3,7 +3,7 @@ const Post = require('../models/post.model');
 
 exports.toggleLike = async (req, res) => {
     const { postId } = req.params;
-    const userId = req.user.user_id;
+    const userId = req.user.id;
 
     try {
         const existingLike = await Like.findOne({
@@ -19,7 +19,8 @@ exports.toggleLike = async (req, res) => {
         } else {
             await Like.create({
                 user_id: userId,
-                post_id: postId
+                post_id: postId,
+                comment_id: null
             });
         }
 
