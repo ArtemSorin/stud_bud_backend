@@ -8,6 +8,7 @@ const postRoutes = require('./routes/post.routes');
 const chatRoutes = require('./routes/chat.routes')
 const messageRoutes = require('./routes/message.routes');
 const likeRoutes = require('./routes/like.routes');
+const commentRoutes = require('./routes/comment.routes');
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use('/api/posts', postRoutes);
 app.use('/api/chats', chatRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/likes', likeRoutes);
+app.use('/api/comments', commentRoutes);
 
 
 app.use('/uploads', express.static('uploads'));

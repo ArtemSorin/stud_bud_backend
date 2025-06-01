@@ -6,6 +6,8 @@ const Like = require('./like.model');
 const Chat = require('./chat.model');
 const Message = require('./message.model');
 const Interest = require('./interest.model');
+const Comment = require('./comment.model');
+
 
 
 const initModels = async () => {
@@ -34,5 +36,6 @@ module.exports = {
     Like,
     Chat,
     Message,
+    Comment,
     initModels,
 };

@@ -2,10 +2,19 @@ const express = require('express');
 const router = express.Router();
 const authenticate = require('../middlewares/auth.middleware');
 const upload = require('../middlewares/upload.middleware');
-const { Post } = require('../models');
+const likeController = require('../controllers/like.controller');
+const postController = require('../controllers/post.controller'); // импортируем контроллер
 
-router.get('/', require('../controllers/post.controller').getAllPosts);
+// Получить все посты
+router.get('/', postController.getAllPosts);
 
+// Получить пост по ID — добавь этот роут!
+router.get('/:postId', postController.getPostById);
+
+// Лайк поста
+router.post('/:postId/like', authenticate, likeController.toggleLike);
+
+// Создать пост
 router.post(
     '/',
     authenticate,

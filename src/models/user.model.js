@@ -26,7 +26,8 @@ const User = sequelize.define('User', {
     last_name: DataTypes.STRING(50),
     birth_date: DataTypes.DATE,
     profile_picture_url: DataTypes.STRING(255),
-    bio: DataTypes.TEXT,
+    gender: DataTypes.STRING(10),
+    location: DataTypes.STRING(100),
     registration_date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
