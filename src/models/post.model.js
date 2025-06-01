@@ -19,14 +19,6 @@ const Post = sequelize.define('Post', {
         type: DataTypes.STRING(255),
         allowNull: true,
     },
-    created_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-    },
-    updated_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-    },
     is_public: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
@@ -37,7 +29,9 @@ const Post = sequelize.define('Post', {
     },
 }, {
     tableName: 'posts',
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
 });
 
 module.exports = Post;

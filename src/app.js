@@ -23,6 +23,9 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/likes', likeRoutes);
 
 
+app.use('/uploads', express.static('uploads'));
+
+
 initModels()
     .then(() => console.log('База данных синхронизирована'))
     .catch((err) => console.error('Ошибка синхронизации базы данных', err));
