@@ -5,7 +5,8 @@ const Post = require('../models/post.model');
 exports.getUserProfile = async (req, res) => {
     try {
         const user = await User.findByPk(req.user.id, {
-            attributes: ['username', 'first_name', 'last_name', 'birth_date'],
+            attributes: ['username', 'first_name', 'last_name', 'birth_date', 'gender', 'location', 'profile_picture_url'],
+
 
             include: [
                 { model: Interest, through: { attributes: [] } },

@@ -9,6 +9,7 @@ const chatRoutes = require('./routes/chat.routes')
 const messageRoutes = require('./routes/message.routes');
 const likeRoutes = require('./routes/like.routes');
 const commentRoutes = require('./routes/comment.routes');
+const announcementRoutes = require('./routes/announcement.routes');
 
 
 const app = express();
@@ -23,6 +24,8 @@ app.use('/api/chats', chatRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/likes', likeRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/announcements', announcementRoutes);
+
 
 
 app.use('/uploads', express.static('uploads'));

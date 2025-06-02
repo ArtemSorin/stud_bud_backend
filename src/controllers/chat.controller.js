@@ -4,7 +4,6 @@ const { Op } = require('sequelize');
 const getUserChats = async (req, res) => {
     const userId = req.user.id;
 
-
     try {
         const chats = await Chat.findAll({
             where: {

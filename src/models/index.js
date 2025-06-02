@@ -7,6 +7,7 @@ const Chat = require('./chat.model');
 const Message = require('./message.model');
 const Interest = require('./interest.model');
 const Comment = require('./comment.model');
+const Announcement = require('./announcement.model');
 
 
 
@@ -26,6 +27,10 @@ const initModels = async () => {
     User.belongsToMany(Post, { through: Like, foreignKey: 'user_id', as: 'LikedPosts' });
     Post.belongsToMany(User, { through: Like, foreignKey: 'post_id', as: 'LikedBy' });
 
+    Announcement.belongsTo(User, { foreignKey: 'user_id', as: 'announcementAuthor' });
+    User.hasMany(Announcement, { foreignKey: 'user_id', as: 'userAnnouncements' });
+
+
     await sequelize.sync({ alter: true });
 };
 
@@ -37,5 +42,6 @@ module.exports = {
     Chat,
     Message,
     Comment,
+    Announcement,
     initModels,
 };

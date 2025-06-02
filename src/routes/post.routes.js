@@ -3,7 +3,8 @@ const router = express.Router();
 const authenticate = require('../middlewares/auth.middleware');
 const upload = require('../middlewares/upload.middleware');
 const likeController = require('../controllers/like.controller');
-const postController = require('../controllers/post.controller'); // импортируем контроллер
+const postController = require('../controllers/post.controller');
+const { Post } = require('../models');
 
 // Получить все посты
 router.get('/', postController.getAllPosts);

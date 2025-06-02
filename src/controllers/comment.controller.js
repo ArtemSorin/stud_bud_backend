@@ -30,7 +30,7 @@ exports.createComment = async (req, res) => {
     try {
         const { postId } = req.params;
         const { content, parent_comment_id } = req.body;
-        const userId = req.user.id; // предполагается, что используется auth middleware
+        const userId = req.user.id;
 
         const comment = await Comment.create({
             post_id: postId,
